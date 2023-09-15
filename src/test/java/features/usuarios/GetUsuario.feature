@@ -1,48 +1,55 @@
-Feature: Metodo get para listar usuarios cadastrados
+Feature: Método Get para listar usuários cadastrados
 
   Background:
-    * url 'https://serverest.dev'
+    * url url
 
-    Scenario: Listar usuarios cadastrados
-      Given path '/usuarios'
-      When  method Get
-      Then status 200
+  @Regressivo
+  Scenario: Listar usuários cadastrados
+    Given path '/usuarios'
+    When  method Get
+    Then status 200
 
-    Scenario: Listar usuario por nome
-      Given path '/usuarios'
-      And param nome = 'Fulano da Silva'
-      When  method Get
-      Then status 200
+  @Regressivo
+  Scenario: Listar usuário por nome
+    Given path '/usuarios'
+    And param nome = 'Fulano da Silva'
+    When  method Get
+    Then status 200
 
-  Scenario: Listar usuario por nome e email
+  @smoke
+  Scenario: Listar usuário por nome e email
     Given path '/usuarios'
     And params {nome: 'Fulano da Silva', email: 'fulano@qa.com'}
     When  method Get
     Then status 200
 
-
-  Scenario: Listar usuario por nome e email validar o nome do usuario retornado
+  @Regressivo
+  Scenario: Listar usuário por nome e email. E validar o nome do usuário retornado
     Given path '/usuarios'
-    And params {email: 'fulano@qa.com'}
+    And params {email: 'testeusu@qa.com.br'}
     When  method Get
     Then status 200
-    And match response.usuarios[0].nome == 'Fulano da Silva'
+    And match response.usuarios[0].nome == 'Teste Usuário'
 
-  Scenario: Listar usuario por nome e email validar o nome do usuario retornado errado
-    Given path '/usuarios'
-    And params {email: 'fulano@qa.com'}
-    When  method Get
-    Then status 200
-    And match response.usuarios[0].nome == 'amandayoung'
-
+  @Regressivo
   Scenario: Listar usuario e verificar se contem um usuário com nome Caio
     Given path '/usuarios'
     When  method Get
     Then status 200
     And match response.usuarios[*].nome contains 'Caio'
 
+  @Regressivo
   Scenario: Listar usuario e verificar se contem um usuário com nome kevinwilliams
     Given path '/usuarios'
     When  method Get
     Then status 200
     And match response.usuarios[*].nome contains 'kevinwilliams'
+
+  @Regressivo
+  Scenario: Verificar o conteúdo do response
+    Given path '/usuarios'
+    When  method Get
+    Then status 200
+    And match response.quantidade != '#null'
+    And match response.quantidade == '#number'
+    #And match response.quantidade == 48
