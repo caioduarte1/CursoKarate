@@ -26,7 +26,7 @@ Feature: Método post para cadastrar usuários
     * def body = read('classpath:/jsons/usuario.json')
     * set body.nome = 'Caio'
     * set body.email = 'caio'+now()+'@qa.com.br'
-    * set body.password = '753951'
+    * set body.password = '180920231045'
     * set body.administrador = 'false'
 
     Given  path '/usuarios'

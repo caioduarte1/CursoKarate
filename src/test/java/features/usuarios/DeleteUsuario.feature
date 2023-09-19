@@ -20,7 +20,7 @@ Feature: Método delete para deletar usuários
       * def body =
       """
       {
-        "nome": "João Miguel Teste QA",
+        "nome": "Caio Teste QA",
         "email": #(email),
         "password": "testeUsuario",
         "administrador": "true"

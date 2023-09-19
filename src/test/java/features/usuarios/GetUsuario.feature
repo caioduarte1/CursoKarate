@@ -26,10 +26,10 @@ Feature: Método Get para listar usuários cadastrados
   @Regressivo
   Scenario: Listar usuário por nome e email. E validar o nome do usuário retornado
     Given path '/usuarios'
-    And params {email: 'testeusu@qa.com.br'}
+    And params {email: 'fulano@qa.com'}
     When  method Get
     Then status 200
-    And match response.usuarios[0].nome == 'Teste Usuário'
+    And match response.usuarios[0].nome == 'Fulano da Silva'
 
   @Regressivo
   Scenario: Listar usuario e verificar se contem um usuário com nome Caio
@@ -39,11 +39,11 @@ Feature: Método Get para listar usuários cadastrados
     And match response.usuarios[*].nome contains 'Caio'
 
   @Regressivo
-  Scenario: Listar usuario e verificar se contem um usuário com nome kevinwilliams
+  Scenario: Listar usuario e verificar se contem um usuário com nome Marison Cesar
     Given path '/usuarios'
     When  method Get
     Then status 200
-    And match response.usuarios[*].nome contains 'kevinwilliams'
+    And match response.usuarios[*].nome contains 'Marison Cesar'
 
   @Regressivo
   Scenario: Verificar o conteúdo do response
