@@ -38,7 +38,7 @@ Feature: Método Get para listar usuários cadastrados
     Then status 200
     And match response.usuarios[*].nome contains 'Caio'
 
-  @Regressivo
+  @Erro
   Scenario: Listar usuario e verificar se contem um usuário com nome Marison Cesar
     Given path '/usuarios'
     When  method Get
