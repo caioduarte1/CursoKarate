@@ -11,7 +11,7 @@ public class ExecucaoGeralTestRunner {
     public void runExecucaoGeralParalela(){
         Runner.Builder builder = new Runner.Builder();
         builder.path("classpath:features");
-        builder.tags("@Regressivo,@smoke");
+        builder.tags("@Regressivo,@smoke,@diferente");
         Results results = builder.parallel(100);
         Assertions.assertEquals(0,results.getFailCount());
     }

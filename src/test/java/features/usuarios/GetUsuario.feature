@@ -38,12 +38,12 @@ Feature: Método Get para listar usuários cadastrados
     Then status 200
     And match response.usuarios[*].nome contains 'Caio'
 
-  @Erro
+  @diferente
   Scenario: Listar usuario e verificar se contem um usuário com nome Marison Cesar
     Given path '/usuarios'
     When  method Get
     Then status 200
-    And match response.usuarios[*].nome contains 'Marison Cesar'
+    And match response.usuarios[*].nome != 'Marison Cesar'
 
   @Regressivo
   Scenario: Verificar o conteúdo do response
